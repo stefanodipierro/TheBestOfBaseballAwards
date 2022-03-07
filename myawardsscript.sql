@@ -44,3 +44,16 @@ SELECT
  JOIN people ON salaries.playerid = people.playerid
  WHERE pitching.gs >= 10
  ORDER BY 3 DESC;
+
+ -- The Poorest Talent: Awarded player with the lowest salary during the awarded year.
+SELECT
+	people.namefirst,
+  people.namelast,
+  awardsplayers.awardid AS Award,
+  awardsplayers.yearid AS Year,
+  salaries.salary AS Salary
+ FROM awardsplayers
+ JOIN salaries ON awardsplayers.yearid = salaries.yearid
+	AND awardsplayers.playerid = salaries.playerid
+ JOIN people ON people.playerid = awardsplayers.playerid
+ ORDER BY 5;
